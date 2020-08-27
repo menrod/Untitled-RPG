@@ -21,10 +21,11 @@ public class Movements : MonoBehaviour
         {
             AttackPressed = 1;
             rb.AddForce(transform.forward*5, ForceMode.Impulse);
-            Vector3 CurrentSpeed = new Vector3(rb.velocity.x, 0, rb.velocity.z);
-            Vector3 SpeedLim = Vector3.ClampMagnitude(CurrentSpeed, 0.1f);
+            //Vector3 CurrentSpeed = new Vector3(rb.velocity.x, 0, rb.velocity.z);
+            //Vector3 SpeedLim = Vector3.ClampMagnitude(CurrentSpeed, 0.1f);
 
-            rb.velocity = new Vector3(SpeedLim.x, rb.velocity.y, SpeedLim.z);
+            //rb.velocity = new Vector3(SpeedLim.x, rb.velocity.y, SpeedLim.z);
+            rb.velocity = Vector3.zero;
         }
         else
         {
@@ -35,7 +36,7 @@ public class Movements : MonoBehaviour
             }
             else
             {
-                //rb.velocity = Vector3.zero;
+                rb.velocity = Vector3.zero;
             }
         }
         PlayerAnim.SetFloat("Attack", AttackPressed);
