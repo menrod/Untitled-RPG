@@ -8,6 +8,8 @@ public class Movements : MonoBehaviour
     [SerializeField] Rigidbody rb;
     [SerializeField] float SpeedLimit, AttackPressed;
     [SerializeField] Animator PlayerAnim;
+
+    [SerializeField] FixedJoystick MovementJoystick;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,7 +21,7 @@ public class Movements : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            AttackPressed = 1;
+            //AttackPressed = 1;
             rb.AddForce(transform.forward*5, ForceMode.Impulse);
             //Vector3 CurrentSpeed = new Vector3(rb.velocity.x, 0, rb.velocity.z);
             //Vector3 SpeedLim = Vector3.ClampMagnitude(CurrentSpeed, 0.1f);
@@ -44,8 +46,12 @@ public class Movements : MonoBehaviour
     }
     void Movement()
     {
-        float x = Input.GetAxis("Horizontal");
-        float y = Input.GetAxis("Vertical");
+        //float x = Input.GetAxis("Horizontal");
+        //float y = Input.GetAxis("Vertical");
+
+        float x = MovementJoystick.Horizontal;
+        float y = MovementJoystick.Vertical;
+
         float moveforward = 1 * Mathf.Clamp(Vector2.SqrMagnitude(new Vector2(x, y)), 0, 1);
         
         if ((x != 0) || (y != 0))
